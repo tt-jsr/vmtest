@@ -14,3 +14,23 @@ function grp146
 end
 
 
+/****************************************/
+equ inc_value 2
+equ answer 1
+equ count 100
+
+load answer
+; Main loop
+loop "answer < 100" 
+    call func
+endloop
+
+; The multiply function
+:func
+eval "inc_value *"
+mult
+return ; Leave answer on stack
+
+:done
+store answer
+halt
