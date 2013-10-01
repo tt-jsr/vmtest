@@ -21,16 +21,15 @@ store answer
 return
 
 :done
-call printtest
+call 0 printtest
 halt
 
 :printtest
 push "Hello"
 push "World"
 push 1
-push pop
+push answer
 call 4 Print
-break
 return
 
 

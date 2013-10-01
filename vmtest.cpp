@@ -13,46 +13,25 @@ using namespace std;
 
 class Print : public Function
 {
-    void printit(Machine& machine, Data *pData)
+    void OnExecute()
     {
-        switch (pData->type)
+        for (int i = 0; i < numargs(); i++)
         {
-            case Data::INT:
+            switch (GetType(i))
+            {
+            case Function::INT:
                 {
-                    Int *p = (Int *)pData;
-                    cout << "Print: " << p->n << endl;
-                }
+                int n = GetInt(i);
+                cout << "Print: " << n << endl;
                 break;
-            case Data::STRING:
+                }
+            case Function::STRING:
                 {
-                    String *p = (String *)pData;
-                    cout << "Print: " << p->str << endl;
-                }
+                std::string s = GetString(i);
+                cout << "Print: " << s << endl;
                 break;
-            case Data::VARIABLE:
-                {
-                    Variable *var = (Variable *)pData;
-                    Data *pData;
-                    if (machine.GetVariable(var->name, pData))
-                    {
-                        printit(machine, pData);
-                    }
-                    else
-                    {
-                        cout << "Variable " << var->name << " not found" << endl;
-                    }
                 }
-                break;
-        }
-    }
-
-    void OnExecute(Machine& machine)
-    {
-        int nargs = machine.registers.NArgs();
-        for (int i = 0; i < nargs; i++)
-        {
-            Data *pData = machine.stack.Pop();
-            printit(machine, pData);
+            }
         }
     }
 };
