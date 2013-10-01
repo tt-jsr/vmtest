@@ -48,8 +48,12 @@ class Print : public Function
 
     void OnExecute(Machine& machine)
     {
-        Data *pData = machine.stack.Pop();
-        printit(machine, pData);
+        int nargs = machine.registers.NArgs();
+        for (int i = 0; i < nargs; i++)
+        {
+            Data *pData = machine.stack.Pop();
+            printit(machine, pData);
+        }
     }
 };
 

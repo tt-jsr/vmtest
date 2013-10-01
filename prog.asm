@@ -9,8 +9,7 @@ push answer
 testim count
 pop
 contlt done
-storebp
-call func
+call 0 func
 jump loop
 
 ; The multiply function
@@ -22,17 +21,15 @@ store answer
 return
 
 :done
-store answer
 call printtest
 halt
 
 :printtest
-storebp
 push "Hello"
 push "World"
 push 1
 push pop
-call  Print
+call 4 Print
 break
 return
 
