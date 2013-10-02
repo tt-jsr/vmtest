@@ -60,8 +60,8 @@ int _tmain(int argc, _TCHAR* argv[])
     Print print;
     machine.RegisterFunction("Print", &print);
 
-    std::vector<Data *> args;
-    std::vector<Data *> result;
+    std::vector<Data> args;
+    std::vector<Data> result;
     machine.Call("myfunc", args, result);
     while (machine.IsHalted() == false)
     {
@@ -77,9 +77,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
     }
 
-    Data *pData;
+    Data pData;
     machine.GetGlobalVariable("answer", pData);
-    std::cout << "Answer: " << ((Int *)pData)->n << std::endl;
+    std::cout << "Answer: " << pData->GetInt()->n << std::endl;
 	return 0;
 }
 
