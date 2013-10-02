@@ -9,11 +9,11 @@ push answer
 testim count
 pop
 contlt done
-call 0 func
+call 0 Multiply
 jump loop
 
 ; The multiply function
-:func
+function Multiply
 push answer
 push inc_value
 mult
@@ -24,7 +24,7 @@ return
 call 0 printtest
 halt
 
-:printtest
+function printtest
 push "Hello"
 push "World"
 push 1
@@ -32,4 +32,9 @@ push answer
 call 4 Print
 return
 
+function myfunc
+;break
+push "myfunc is called"
+call 1 Print
+return
 

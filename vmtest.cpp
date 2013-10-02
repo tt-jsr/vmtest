@@ -59,6 +59,10 @@ int _tmain(int argc, _TCHAR* argv[])
 
     Print print;
     machine.RegisterFunction("Print", &print);
+
+    std::vector<Data *> args;
+    std::vector<Data *> result;
+    machine.Call("myfunc", args, result);
     while (machine.IsHalted() == false)
     {
         try
@@ -72,6 +76,7 @@ int _tmain(int argc, _TCHAR* argv[])
             return 1;
 		}
     }
+
     Data *pData;
     machine.GetGlobalVariable("answer", pData);
     std::cout << "Answer: " << ((Int *)pData)->n << std::endl;
