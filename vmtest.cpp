@@ -5,36 +5,10 @@
 #include "../VMEngine/machine.h"
 #include "../VMEngine/Assembler.h"
 #include "../VMEngine/Data.h"
-#include "../VMEngine/Function.h"
 #include <fstream>
 
 using namespace vm;
 using namespace std;
-
-class Print : public Function
-{
-    void OnExecute()
-    {
-        for (int i = 0; i < numargs(); i++)
-        {
-            switch (GetType(i))
-            {
-            case Function::INT:
-                {
-                int n = GetInt(i);
-                cout << "Print: " << n << endl;
-                break;
-                }
-            case Function::STRING:
-                {
-                std::string s = GetString(i);
-                cout << "Print: " << s << endl;
-                break;
-                }
-            }
-        }
-    }
-};
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -57,9 +31,6 @@ int _tmain(int argc, _TCHAR* argv[])
         return 1;
 	}
 
-    Print print;
-    machine.RegisterFunction("Print", &print);
-
     while (machine.IsHalted() == false)
     {
         try
@@ -74,10 +45,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
     }
 
-    Data pData;
-    machine.GetGlobalVariable("answer", pData);
-    if (pData)
-        std::cout << "Answer: " << pData->GetInt()->n << std::endl;
 	return 0;
 }
 
