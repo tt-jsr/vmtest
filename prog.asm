@@ -11,8 +11,9 @@ push "strcmp"
 push "Hello world"
 push "Hello world"
 strcmp true
-call 2 testresult
-break
+testim 0
+pop
+call 1 testresult
 return
 
 ;---------------------------------------
@@ -22,16 +23,13 @@ push "substr"
 push "Hello cruel world"
 substr 6 5
 testim "cruel"
-;call 2 testresult
-break
+pop
+call 1 testresult
 return
 
 ;-------------------------------------
 function testresult
-;tos result 
-;tos-1 instruction name
-testim 0
-pop
+;tos instruction name
 jumpe good
 push " failed"
 strcat

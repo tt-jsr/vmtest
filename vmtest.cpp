@@ -64,7 +64,7 @@ int _tmain(int argc, _TCHAR* argv[])
     {
         try
 		{
-            machine.DumpMachine(std::cout);
+            //machine.DumpMachine(std::cout);
             machine.Clock();
 		}
         catch (std::exception& ex)
