@@ -1,25 +1,15 @@
-if (55=6E && 200=CME)
+/55=6E && 200=CME && (150=2 || 150=1)/
 then
-    groups(146)
+    groups 146
     then
-        if (147=12) 
+        match /147=12/ 
         then
-            out 147=14
+            out.147 = in.147
+            out.148 = in.148 * 10
         end
     end
 end
-
-function grp146
-
-end
+/default/
+out.* = in.*
 
 
-/****************************************/
-
-name = "Hello"
-if (name == "Hello")
-then
-    print "Found"
-else
-    print "not found"
-endif

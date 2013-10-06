@@ -4,8 +4,30 @@ call testStrCat
 call testSwap
 call testDup
 call testSplit
+call testFix
 halt
 
+
+;---------------------------------------
+function testFix
+push /35/
+push "8"
+push false
+calllib strcmp
+push 0
+eq
+push /200/
+push "CME"
+push false
+calllib strcmp
+push 0
+eq
+and
+testim true
+pop
+push "testFix"
+call testresult
+return
 
 ;---------------------------------------
 function testSplit
@@ -101,7 +123,7 @@ return
 
 ;-------------------------------------
 function testresult
-;tos instruction name
+;tos instruction name, and the flags set
 jumpe good
 push " failed"
 calllib strcat
